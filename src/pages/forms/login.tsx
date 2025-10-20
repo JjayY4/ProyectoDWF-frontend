@@ -27,25 +27,9 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center bg-sky-50">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Iniciar sesión</h2>
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          required
-          className="w-full mb-4 px-4 py-2 border rounded"
-          onChange={handleChange}
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Contraseña"
-          required
-          className="w-full mb-4 px-4 py-2 border rounded"
-          onChange={handleChange}
-        />
-        <button className="w-full bg-sky-600 text-white py-2 rounded hover:bg-sky-700">
-          Entrar
-        </button>
+        <input name="email" type="email" placeholder="Email" required className="w-full mb-4 px-4 py-2 border rounded" onChange={handleChange} />
+        <input name="password" type="password" placeholder="Contraseña" required className="w-full mb-4 px-4 py-2 border rounded" onChange={handleChange} />
+        <button className="w-full bg-sky-600 text-white py-2 rounded hover:bg-sky-700">Entrar</button>
       </form>
     </div>
   );
