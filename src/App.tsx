@@ -1,4 +1,5 @@
-import './App.css'
+import './App.css';
+import Banner from './components/App/Banner';
 
 export default function App() {
   return (
@@ -9,32 +10,22 @@ export default function App() {
             Explora el Mundo
           </h1>
           <p className="text-lg mb-8">
-            Servicio de agencia de vuelos
+            Sistema de Gestión de Boletos Aéreos.
           </p>
-          <button className="bg-yellow-400 text-sky-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition">
-            Explorar
+          <div className='grid md:grid-cols-2 gap-8'>
+            <button className="bg-yellow-400 text-sky-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition">
+              Iniciar sesión
           </button>
+           <button className="bg-yellow-400 text-sky-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition">
+              Registrarse
+          </button>
+          </div>
+          
         </div>
       </header>
-
-      <section className="py-16">
-        <div className="container mx-auto px-6 grid md:grid-cols-3 gap-8 text-center">
-          {[
-            { title: "Vuelos", desc: "Las mejores tarifas aéreas" },
-            { title: "Tours", desc: "Experiencias únicas" },
-          ].map((s) => (
-            <div key={s.title} className="bg-white p-6 rounded-xl shadow">
-              <h3 className="text-2xl font-bold text-sky-700 mb-2">{s.title}</h3>
-              <p className="text-gray-600">{s.desc}</p>
-            </div>
-          ))}
-        </div>
+      <section>
+        <Banner/>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-sky-800 text-white text-center py-6">
-        © 2025 Proyecto de catedra DWF
-      </footer>
     </div>
   );
 }
