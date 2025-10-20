@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { login } from '../../api/auth';
 import type { LoginRequest } from '../../types/auth';
 import { useAuthStore } from '../../store/authStore';
+import toast from 'react-hot-toast';
 
 export default function Login() {
   const [form, setForm] = useState<LoginRequest>({ email: '', password: '' });
@@ -35,7 +36,7 @@ export default function Login() {
       
       nav(res.rol === 'ADMIN' ? '/admin' : '/');
     } catch (err: any) {
-      alert(err.response?.data?.message || 'Error al iniciar sesión');
+        toast.error(err.response?.data?.message || 'Credenciales inválidas');
     } finally {
       setLoading(false);
     }
