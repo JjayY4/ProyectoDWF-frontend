@@ -6,6 +6,7 @@ import Dashboard from '../pages/dashboards/DashboardPassengers';
 import AdminDashboard from '../pages/dashboards/AdminDashboard';
 import type { JSX } from 'react';
 import Index from '../pages/Index';
+import Reserva from '../pages/reserves/reserve';
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   const token = useAuthStore((s) => s.token);
@@ -15,6 +16,7 @@ export const router = createBrowserRouter([
   { path: '/', element:  <Index/>},
   { path: '/login', element: <Login /> },
   { path: '/register', element: <Register /> },
+  { path: '/reserva', element: <Reserva /> }, 
   {
     path: '/dashboard',
     element: (
