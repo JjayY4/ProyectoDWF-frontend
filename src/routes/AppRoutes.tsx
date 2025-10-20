@@ -4,6 +4,7 @@ import Login from '../pages/forms/login';
 import Register from '../pages/forms/register';
 import Dashboard from '../pages/dashboards/DashboardPassengers';
 import AdminDashboard from '../pages/dashboards/AdminDashboard';
+import Index from '../pages/Index';
 import type { JSX } from 'react';
 
 function Protected({ children }: { children: JSX.Element }) {
@@ -13,7 +14,7 @@ function Protected({ children }: { children: JSX.Element }) {
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/" element={<Index/>} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route

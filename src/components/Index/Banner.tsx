@@ -26,7 +26,7 @@ export default function Banner(){
               ¡Reserva tu vuelo en segundos!
             </p>
             <button className="bg-yellow-400 text-sky-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition transform hover:scale-105">
-              Reserva ahora
+              ¡Reserva de boletos aquí!
             </button>
           </div>
         </div>

@@ -1,6 +1,8 @@
-import Banner from "../components/App/Banner";
-export default function Index(){
-    return (
+import { Link } from 'react-router-dom';
+import Banner from "../components/Index/Banner";
+
+export default function Index() {
+  return (
     <div className="min-h-screen bg-sky-50">
       <header className="bg-sky-600 text-white">
         <div className="container mx-auto px-6 py-20 text-center">
@@ -11,18 +13,23 @@ export default function Index(){
             Sistema de Gestión de Boletos Aéreos.
           </p>
           <div className='grid md:grid-cols-2 gap-8'>
-            <button className="bg-yellow-400 text-sky-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition">
+            <Link
+              to="/login"
+              className="bg-yellow-400 text-sky-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition inline-block text-center"
+            >
               Iniciar sesión
-          </button>
-           <button className="bg-yellow-400 text-sky-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition">
+            </Link>
+            <Link
+              to="/register"
+              className="bg-yellow-400 text-sky-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition inline-block text-center"
+            >
               Registrarse
-          </button>
+            </Link>
           </div>
-          
         </div>
       </header>
       <section>
-        <Banner/>
+        <Banner />
       </section>
     </div>
   );
