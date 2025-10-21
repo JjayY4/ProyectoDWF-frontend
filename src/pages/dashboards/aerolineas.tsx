@@ -92,15 +92,9 @@ export default function Aerolineas() {
     setImagePreview(null);
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
-
-  /* ---------- subida de imagen ---------- */
   const uploadImageToBackend = async (file: File): Promise<string> => {
     const formData = new FormData();
     formData.append('file', file);
-    console.log('Enviando imagen...');
-    console.log('Token:', token);
-    console.log('Archivo:', file.name, file.size, file.type);
-
     try {
       const response = await fetch('http://localhost:8080/api/airlines/upload-image', {
         method: 'POST',
@@ -153,8 +147,6 @@ export default function Aerolineas() {
       }
 
       setMessage({ type: 'success', text: 'Aerolínea creada exitosamente' });
-
-      // reset
       setFormData({ name: '', description: '', iataCode: '', image: null });
       setImagePreview(null);
       if (fileInputRef.current) fileInputRef.current.value = '';
