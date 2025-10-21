@@ -1,5 +1,5 @@
 import axios from './axios';
-import { LoginRequest, LoginResponse, RegisterRequest } from '../types/auth'
+import type{ LoginRequest, LoginResponse, RegisterRequest } from '../types/auth'
 
 export const login = (data: LoginRequest) =>
   axios.post<LoginResponse>('/auth/login', data).then((r) => r.data);
