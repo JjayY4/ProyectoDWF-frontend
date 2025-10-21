@@ -1,4 +1,3 @@
-// AdminLayout.tsx
 import { Outlet, useLocation } from 'react-router-dom';
 import { RoleGuard } from '../../guard/RoleGuard';
 import NavMenuAerolineas from '../../pages/dashboards/NavMenuAerolineas';
