@@ -17,7 +17,7 @@ export default function AdminDashboard() {
       title: "Gestión de Aerolíneas",
       icon: <Building2 className="h-10 w-10 text-blue-500" />,
       description: "Administra las aerolíneas registradas en el sistema.",
-      link: "/admin/aerolineas",
+      link: "/admin/aerolineas/agregar",
       color: "from-blue-100 to-blue-50 hover:from-blue-200 hover:to-blue-100",
     },
     {
