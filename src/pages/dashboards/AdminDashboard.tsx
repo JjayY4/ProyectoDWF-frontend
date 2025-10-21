@@ -31,7 +31,7 @@ export default function AdminDashboard() {
       title: "Aviones y Tripulación",
       icon: <Users2 className="h-10 w-10 text-emerald-500" />,
       description: "Gestiona los aviones y el personal asignado.",
-      link: "/admin/tripulacion",
+      link: "/admin/aviones-tripulacion",
       color: "from-emerald-100 to-emerald-50 hover:from-emerald-200 hover:to-emerald-100",
     },
     {
