@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { Trash2 } from 'lucide-react';
+import toast from 'react-hot-toast';
 import { useAuthStore } from '../../store/authStore';
 
 interface Airline {
@@ -27,6 +29,24 @@ export default function ListarAerolineas() {
   }, [token]);
 
   if (loading) return <p className="text-center mt-10">Cargando aerolíneas...</p>;
+  const handleDelete = (id: number, name: string) => {
+  const confirmar = window.confirm(`¿Estás seguro de eliminar la aerolínea "${name}"?`);
+  if (!confirmar) {
+    toast.error('Eliminación cancelada');
+    return;
+  }
+
+  fetch(`http://localhost:8080/api/airlines/${id}`, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(res => {
+      if (!res.ok) throw new Error('Error al eliminar');
+      toast.success('Aerolínea eliminada correctamente');
+      setAirlines(prev => prev.filter(a => a.idAirline !== id));
+    })
+    .catch(() => toast.error('No se pudo eliminar la aerolínea'));
+};
 
   return (
     <>
@@ -42,12 +62,19 @@ export default function ListarAerolineas() {
                 className="w-full h-56 object-cover"
               />
               <div className="p-5 flex flex-col flex-1">
-                <h2 className="text-xl font-semibold text-gray-800 mb-2">{a.name}</h2>
-                <p className="text-gray-600 mb-3 flex-1">{a.description}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-sky-700 font-medium">IATA: {a.iataCode}</span>
+                <div className="flex justify-between items-start mb-2">
+                    <h2 className="text-xl font-semibold text-gray-800">{a.name}</h2>
+                    <button
+                    onClick={() => handleDelete(a.idAirline, a.name)}
+                    className="text-red-500 hover:text-red-700 transition"
+                    title="Eliminar aerolínea"
+                    >
+                    <Trash2 size={20} />
+                    </button>
                 </div>
-              </div>
+                <p className="text-gray-600 mb-3 flex-1">{a.description}</p>
+                <span className="text-sm text-sky-700 font-medium">IATA: {a.iataCode}</span>
+                </div>
             </div>
           ))}
         </div>
