@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { useAuthStore } from '../../store/authStore';
+import useAirlines from '../../hooks/useAirlines';
 
 interface CrewFormData {
   idAirline: number;
@@ -77,6 +78,9 @@ export default function AgregarTripulacion() {
     }
   };
 
+const airlines = useAirlines();
+  
+
   return (
     <div className="max-w-2xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-8 text-gray-800">Agregar Tripulación</h1>
@@ -92,6 +96,9 @@ export default function AgregarTripulacion() {
           <label className="block text-sm font-medium text-gray-700 mb-2">Aerolínea *</label>
           <select name="idAirline" value={formData.idAirline} onChange={handleChange} className={`w-full px-3 py-2 border rounded-md ${errors.idAirline ? 'border-red-500' : 'border-gray-300'}`}>
             <option value={0}>Seleccione una aerolínea</option>
+            {airlines.map(a => (
+                <option key={a.idAirline} value={a.idAirline}>{a.name}</option>
+                ))}
           </select>
           {errors.idAirline && <p className="text-sm text-red-600">{errors.idAirline}</p>}
         </div>
