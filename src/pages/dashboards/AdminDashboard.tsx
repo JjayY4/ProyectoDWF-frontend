@@ -4,10 +4,13 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Building2, Plane, Users2, MessageSquare } from "lucide-react";
 import { useAuthStore } from "../../store/authStore";
+import { useState } from "react";
+import UserProfile from "../../components/profile/userProfile";
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
   const user = useAuthStore((s) => s.user);
+  const [open, setOpen] = useState(false);
 
   const sections = [
     {
@@ -46,9 +49,13 @@ export default function AdminDashboard() {
         <h1 className="text-3xl font-bold text-gray-800 mb-2 text-center">
           Panel de Administración
         </h1>
-        
-        <p className="text-lg text-gray-600 mb-8 text-center">
-          {user?.name || 'Usuario'}
+                <p className="text-lg text-gray-600 mb-8 text-center">
+          <button
+            onClick={() => setOpen(true)}
+            className="underline hover:text-blue-600 transition font-medium"
+          >
+            {user?.name || 'Usuario'}
+          </button>
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -74,6 +81,8 @@ export default function AdminDashboard() {
             </motion.div>
           ))}
         </div>
+
+        <UserProfile open={open} onClose={() => setOpen(false)} />
       </div>
     </RoleGuard>
   );
