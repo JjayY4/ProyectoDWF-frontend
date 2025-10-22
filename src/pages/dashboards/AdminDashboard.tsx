@@ -2,7 +2,7 @@ import { RoleGuard } from "../../guard/RoleGuard";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { Building2, Plane, Users2, MessageSquare } from "lucide-react";
+import { Building2, Plane, Users2, MessageSquare, Route } from "lucide-react";
 import { useAuthStore } from "../../store/authStore";
 import { useState } from "react";
 import UserProfile from "../../components/profile/userProfile";
@@ -35,6 +35,13 @@ export default function AdminDashboard() {
       color: "from-emerald-100 to-emerald-50 hover:from-emerald-200 hover:to-emerald-100",
     },
     {
+      title: "Rutas y destinos",
+      icon: <Route className="h-10 w-10 text-amber-500" />,
+      description: "Gestiona rutas aéreas y destinos estratégicos.",
+      link: "/admin/rutas",
+      color: "from-amber-100 to-amber-50 hover:from-amber-200 hover:to-amber-100",
+    },
+    {
       title: "Reclamos y Sugerencias",
       icon: <MessageSquare className="h-10 w-10 text-rose-500" />,
       description: "Revisa y responde los reclamos de los pasajeros.",
@@ -49,16 +56,16 @@ export default function AdminDashboard() {
         <h1 className="text-3xl font-bold text-gray-800 mb-2 text-center">
           Panel de Administración
         </h1>
-                <p className="text-lg text-gray-600 mb-8 text-center">
+
+        <p className="text-lg text-gray-600 mb-8 text-center">
           <button
             onClick={() => setOpen(true)}
             className="underline hover:text-blue-600 transition font-medium"
           >
-            {user?.name || 'Usuario'}
+            {user?.name || "Usuario"}
           </button>
         </p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {sections.map((section, i) => (
             <motion.div
               key={i}

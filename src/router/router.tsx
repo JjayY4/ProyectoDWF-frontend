@@ -13,6 +13,7 @@ import ListarAerolineas from '../pages/dashboards/listaAerolineas';
 import Vuelos from '../pages/dashboards/vuelos';
 import Reserva from '../pages/reserves/reserve';
 import AvionesTripulacion from '../pages/dashboards/aviones-tripulacion';
+import Rutas from '../pages/dashboards/Rutas';
 import Reclamos from '../pages/dashboards/reclamos';
 
 import type { JSX } from 'react';
@@ -39,6 +40,7 @@ export const router = createBrowserRouter([
   { path: '/register', element: <Register /> },
   { path: '/reserva', element: <Reserva /> },
   { path: '/aviones-tripulacion', element: <AvionesTripulacion /> },
+  {path: '/rutas', element:<Rutas/>},
   { path: '/reclamos', element: <Reclamos /> },
   {
     path: '/aerolineas',
@@ -66,6 +68,7 @@ export const router = createBrowserRouter([
       { path: 'vuelos', element: <Vuelos /> },
       { path: 'aviones-tripulacion', element: <AvionesTripulacion /> },
       { path: 'reclamos', element: <Reclamos /> },
+      { path: 'rutas', element:<Rutas />}
     ],
   },
 
