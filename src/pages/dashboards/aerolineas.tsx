@@ -150,9 +150,9 @@ export default function Aerolineas() {
       setFormData({ name: '', description: '', iataCode: '', image: null });
       setImagePreview(null);
       if (fileInputRef.current) fileInputRef.current.value = '';
-    } catch (error) {
-      console.error('Error:', error);
-      setMessage({ type: 'error', text: error instanceof Error ? error.message : 'Error al crear la aerolínea' });
+    } catch (error:any) {
+        const msg = error?.message || 'Error al crear la aerolínea';
+          setMessage({ type: 'error', text: msg });
     } finally {
       setIsSubmitting(false);
     }

@@ -9,9 +9,7 @@ interface Airplane {
   type: string;
   totalCapacity: number;
   description: string;
-  airline: {
-    name: string;
-  };
+  airlineName: string;
 }
 
 export default function ListarAviones() {
@@ -60,7 +58,7 @@ export default function ListarAviones() {
               <p className="text-sm text-gray-600">Tipo: {a.type}</p>
               <p className="text-sm text-gray-600">Capacidad: {a.totalCapacity}</p>
               <p className="text-sm text-gray-600">Descripción: {a.description}</p>
-              <p className="text-sm text-sky-700 font-medium">Aerolínea: {a.airline.name}</p>
+              <p className="text-sm text-sky-700 font-medium">Aerolínea: {a.airlineName}</p>
             </div>
             <button
               onClick={() => handleDelete(a.idAirplane, a.model)}
