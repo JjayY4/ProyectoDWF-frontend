@@ -1,4 +1,3 @@
-// router.tsx
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
@@ -15,7 +14,6 @@ import Reserva from '../pages/reserves/reserve';
 import AvionesTripulacion from '../pages/dashboards/aviones-tripulacion';
 import Rutas from '../pages/dashboards/Rutas';
 import Reclamos from '../pages/dashboards/reclamos';
-
 import type { JSX } from 'react';
 import NavMenuAerolineas from '../pages/dashboards/NavMenuAerolineas';
 
@@ -39,16 +37,37 @@ export const router = createBrowserRouter([
   { path: '/login', element: <Login /> },
   { path: '/register', element: <Register /> },
   { path: '/reserva', element: <Reserva /> },
-  { path: '/aviones-tripulacion', element: <AvionesTripulacion /> },
-  {path: '/rutas', element:<Rutas/>},
-  { path: '/reclamos', element: <Reclamos /> },
+  {
+    path: '/aviones-tripulacion',
+    element: (
+      <AdminRoute>
+        <AvionesTripulacion />
+      </AdminRoute>
+    ),
+  },
+  {
+    path: '/reclamos',
+    element: (
+      <AdminRoute>
+        <Reclamos />
+      </AdminRoute>
+    ),
+  },
+  {
+    path: '/rutas',
+    element: (
+      <AdminRoute>
+        <Rutas />
+      </AdminRoute>
+    ),
+  },
   {
     path: '/aerolineas',
     element: (
       <AdminRoute>
         <div className="min-h-screen bg-gray-50">
-          <NavMenuAerolineas/>
-            <Outlet/>
+          <NavMenuAerolineas />
+          <Outlet />
         </div>
       </AdminRoute>
     ),
@@ -60,7 +79,11 @@ export const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <ProtectedRoute><AdminLayout /></ProtectedRoute>,
+    element: (
+      <AdminRoute>
+        <AdminLayout />
+      </AdminRoute>
+    ),
     children: [
       { index: true, element: <AdminDashboard /> },
       { path: 'aerolineas', element: <Aerolineas /> },
@@ -68,9 +91,8 @@ export const router = createBrowserRouter([
       { path: 'vuelos', element: <Vuelos /> },
       { path: 'aviones-tripulacion', element: <AvionesTripulacion /> },
       { path: 'reclamos', element: <Reclamos /> },
-      { path: 'rutas', element:<Rutas />}
+      { path: 'rutas', element: <Rutas /> },
     ],
   },
-
   { path: '*', element: <Navigate to="/" replace /> },
 ]);
